@@ -1,15 +1,15 @@
 <div *ngIf="dataService.selectedLocation">
   <h2>Risultati per le coordinate {{ dataService.selectedLocation.lat }}, {{ dataService.selectedLocation.lon }}</h2>
 
-  <div *ngIf="sunriseSunsetData">
+  <div *ngIf="dataService.sunriseSunsetData">
     <h3>Orari di alba e tramonto:</h3>
-    <p>Alba: {{ sunriseSunsetData.sunrise }}</p>
-    <p>Tramonto: {{ sunriseSunsetData.sunset }}</p>
+    <p>Alba: {{ dataService.sunriseSunsetData.sunrise }}</p>
+    <p>Tramonto: {{ dataService.sunriseSunsetData.sunset }}</p>
   </div>
 
-  <div *ngIf="weatherData">
+  <div *ngIf="dataService.weatherData">
     <h3>Dati meteo:</h3>
-    <p>Timepoint: {{ weatherData.timepoint }}</p>
-    <p>Temperature: {{ weatherData.temp2m }}</p>
+    <p>Timepoint: {{ dataService.weatherData.timepoint }}</p>
+    <p>Temperature: {{ dataService.weatherData.temp2m }}</p>
   </div>
 </div>
