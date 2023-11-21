@@ -1,15 +1,20 @@
-<div *ngIf="dataService.selectedLocation">
-  <h2>Risultati per le coordinate {{ dataService.selectedLocation.lat }}, {{ dataService.selectedLocation.lon }}</h2>
+porcodio
 
-  <div *ngIf="dataService.sunriseSunsetData">
-    <h3>Orari di alba e tramonto:</h3>
-    <p>Alba: {{ dataService.sunriseSunsetData.sunrise }}</p>
-    <p>Tramonto: {{ dataService.sunriseSunsetData.sunset }}</p>
-  </div>
+<!-- <div *ngIf=""> -->
+<h2>
+  Risultati per le coordinate {{ dataService.selectedLocation?.lat }},
+  {{ dataService.selectedLocation?.lon }}
+</h2>
 
-  <div *ngIf="dataService.weatherData">
-    <h3>Dati meteo:</h3>
-    <p>Timepoint: {{ dataService.weatherData.timepoint }}</p>
-    <p>Temperature: {{ dataService.weatherData.temp2m }}</p>
-  </div>
+<div *ngIf="dataService.dataService.sunriseSunsetData">
+  <h3>Orari di alba e tramonto:</h3>
+  <p>Alba: {{ dataService.sunriseSunsetData?.sunrise }}</p>
+  <p>Tramonto: {{ dataService.sunriseSunsetData?.sunset }}</p>
 </div>
+
+<div *ngIf="dataService.dataService.weatherData">
+  <h3>Dati meteo:</h3>
+  <p>Timepoint: {{ dataService.weatherData?.timepoint }}</p>
+  <p>Temperature: {{ dataService.weatherData?.temp2m }}</p>
+</div>
+<!-- </div> -->

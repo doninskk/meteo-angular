@@ -10,12 +10,13 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   getSunriseSunset(lat: string, lon: string) {
-    const url = `https://sunrisesunset.io/api?lat=${lat}&lng=${lon}`;
-    return this.http.get<SunriseSunsetData>(url);
+    return this.http.get(
+      `https://api.sunrisesunset.io/json?lat=${lat}&lng=${lon}`
+    );
   }
 
   getWeather(lat: string, lon: string) {
     const url = `https://www.7timer.info/bin/astro.php?lon=${lon}&lat=${lat}&ac=0&unit=metric&output=json&tzshift=0`;
     return this.http.get<WeatherData>(url);
-}
+  }
 }

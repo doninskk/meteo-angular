@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { DataService } from '../services/data.service';
 import { WeatherData, SunriseSunsetData } from '../model/luogo.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dettaglio',
@@ -10,35 +11,31 @@ import { WeatherData, SunriseSunsetData } from '../model/luogo.model';
   styleUrls: ['./dettaglio.component.css'],
 })
 export class DettaglioComponent implements OnInit {
-  
+  currentLocation = { latitude: '', longitude: '' };
   sunriseSunsetData: SunriseSunsetData | undefined;
   weatherData: WeatherData | undefined;
+  paramsSub: Subscription | undefined;
+  httpSub: Subscription | undefined;
 
-  constructor(private route: ActivatedRoute, private apiService: ApiService, public dataService: DataService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private apiService: ApiService,
+    public dataService: DataService
+  ) {}
 
   ngOnInit(): void {
-    // Recupera le coordinate dalla route
-    const lat: string = this.route.snapshot.params['lat'];
-    const lon: string = this.route.snapshot.params['lon'];
-    
+    this.paramsSub = this.route.params.subscribe((params) => {
+      const lat: string = params['lat'];
+      const lon: string = params['lon'];
 
-    // Esegue le chiamate API con le coordinate convertite in stringhe
-    this.apiService.getSunriseSunset(lat, lon).subscribe(
-      (sunriseSunsetData: SunriseSunsetData) => {
-        this.dataService.sunriseSunsetData = sunriseSunsetData;
-      },
-      (error) => {
-        console.error('Sunrise/Sunset API Error:', error);
-      }
-    );
+      this.apiService.getSunriseSunset(lat, lon).subscribe((data: any) => {
+        this.sunriseSunsetData = data;
+        console.log(data);
+      });
 
-    this.apiService.getWeather(lat, lon).subscribe(
-      (weatherData: WeatherData) => {
-        this.dataService.weatherData = weatherData;
-      },
-      (error) => {
-        console.error('Weather Data API Error:', error);
-      }
-    );
+      //   this.apiService.getWeather(lat, lon).subscribe((data: WeatherData) => {
+      //     this.weatherData = data;
+      //   });
+    });
   }
 }

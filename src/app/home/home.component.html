@@ -1,6 +1,21 @@
 <h1>Meteo - Home</h1>
 <label for="lat">Latitude:</label>
-<input type="text" id="lat" [(ngModel)]="lat" placeholder="Enter latitude" /><br />
+<input
+  type="text"
+  id="lat"
+  [(ngModel)]="lat"
+  placeholder="Enter latitude"
+/><br />
 <label for="lon">Longitude:</label>
-<input type="text" id="lon" [(ngModel)]="lon" placeholder="Enter longitude" /><br />
-<button (click)="selectLocation()">Cerca</button>
+<input
+  type="text"
+  id="lon"
+  [(ngModel)]="lon"
+  placeholder="Enter longitude"
+/><br />
+<button
+  (click)="selectLocation(lat, lon)"
+  [routerLink]="'/dettaglio/' + lat + '/' + lon"
+>
+  Cerca
+</button>
