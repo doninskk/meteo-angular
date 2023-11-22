@@ -6,7 +6,6 @@ export interface WeatherData {
   export interface SunriseSunsetData {
     sunrise: string;
     sunset: string;
-    /*
     first_light: string,
     last_light: string,
     dawn: string,
@@ -16,5 +15,5 @@ export interface WeatherData {
     day_length: string,
     timezone: string,
     utc_offset: number
-  */
+
   }

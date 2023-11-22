@@ -1,0 +1,27 @@
+.container {
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  h2 {
+    color: #24292e;
+  }
+
+  h3 {
+    color: orange;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0px;
+  }
+    
+  th {
+    background-color: #93b6dc;
+    color: white;
+  }
