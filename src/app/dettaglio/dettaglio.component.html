@@ -38,11 +38,13 @@
           <th scope="col">Temperature</th>
         </tr>
       </thead>
+      <tbody>
+        <tr *ngFor="let weather of weatherData">
+          <td>{{ weather.timepoint }}</td>
+          <td>{{ weather.temp2m }}</td>
+        </tr>
+      </tbody>
     </table>
-    <div *ngFor="let weather of weatherData">
-      <td>{{ weather.timepoint }}</td>
-      <td>{{ weather.temp2m }}</td>
-    </div>
   </div>
 </div>
 </body>

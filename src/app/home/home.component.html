@@ -6,39 +6,7 @@
     <title>Home - Meteo</title>
 </head>
 <body>
-    <section id="hero" class="d-flex justify-content-center align-items-center">
-        <div class="content text-center text-white">
-            <h1>Previsioni del tempo</h1>
-            <h2>Inserisci le coordinate per avere info sul meteo</h2>
-            <div class="formWrapper">
-                <form action="" method="get">
-                    <div class="formRow d-flex">
-                        <div class="field flex-fill me-5">
-                            <label for="lat">Latitudine</label>
-                            <input type="text" id="lat" [(ngModel)]="lat" placeholder="Enter latitude" /><br/>
-                        </div>
 
-                        <div class="field flex-fill ms-5">
-                            <label for="lng">Longitudine</label>
-                            <input type="text" id="lon" [(ngModel)]="lon" placeholder="Enter longitude"/><br/>
-                        </div>
-                    </div>
-
-                    <div class="formRow d-flex">
-                        <div class="field flex-fill me-5">
-                            <input class="d-block btn btn-light" type="reset" value="Reset">
-                        </div>
-
-                        <div class="field flex-fill ms-5">
-                            <button (click)="selectLocation()">Cerca</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-            <!--
     <div class="container">
         <h1>Meteo - Home</h1>
         <label for="lat">Latitude:</label>
@@ -47,67 +15,25 @@
         <input type="text" id="lon" [(ngModel)]="lon" placeholder="Enter longitude" /><br />
         <button (click)="selectLocation()">Cerca</button>
     </div>
-    -->
-    <script>
-        document.querySelector("form").addEventListener("submit", function (event) {
-    event.preventDefault()
-    let latitudine = document.querySelector("#lat").value
-    let longitudine = document.querySelector("#lng").value
 
-    console.log(latitudine, longitudine)
-
-    let url = `https://api.open-meteo.com/v1/forecast?latitude=${latitudine}&longitude=${longitudine}&hourly=temperature_2m,relativehumidity_2m,precipitation_probability,windspeed_10m`
-
-
-    console.log(url)
-
-    fetch(url).then(function (resp) {
-        return resp.json()
-    }).then(function (data) {
-        console.log(data.hourly.time)
-        console.log(data.hourly.temperature_2m)
-    })
-})
-
-
-let canvas = document.querySelector("canvas")
-
-let config = {
-    type: 'line',
-    data: {
-        labels: ["January", "February", "March"],
-        datasets: [
-            {
-                label: 'Temperatura media',
-                data: [10, 20, 11.2],
-                fill: false,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1,
-                yAxisID: 'y',
-            },
-            {
-                label: 'Umidità media',
-                data: [70, 72, 66],
-                fill: false,
-                borderColor: 'rgb(255, 0, 0)',
-                tension: 0.1,
-                yAxisID: 'y1',
-            }
-        ]
-    },
-    scales: {
-        y: {
-            type: 'linear',
-            position: 'left',
-        },
-        y1: {
-            type: 'linear',
-            position: 'left'
-        }
-    }
-}
-const myChart = new Chart(canvas, config)
-    </script>
 </body>
+
+<footer>
+    <div>
+      <h3>Informazioni</h3>
+      <p>Questo sito web fornisce informazioni sulle città più visitate del mondo.</p>
+    </div>
+    <div>
+      <h3>Le città più visitate</h3>
+      <ul>
+        <li><a (click)="selectCity('Torino')" style="cursor:pointer;" > Torino</a></li>
+        <li><a (click)="selectCity('Seoul')" style="cursor:pointer;" > Seoul</a></li>
+        <!-- Add more cities if needed -->
+      </ul>
+    </div>
+
+  </footer>
+
+
 </html>
 

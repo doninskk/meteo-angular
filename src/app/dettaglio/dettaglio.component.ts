@@ -22,9 +22,12 @@ export class DettaglioComponent implements OnInit {
       const lat = this.dataService.selectedLocation.lat;
       const lon = this.dataService.selectedLocation.lon;
 
+      
       this.apiService.getSunriseSunset(lat, lon).subscribe(
         (data) => {
           this.sunriseSunsetData = data;
+          console.log(lat)
+          console.log(lon)
         }
         // (error) => {
         //   console.error('Sunrise/Sunset API Error:', error);
