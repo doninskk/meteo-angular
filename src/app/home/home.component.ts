@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
-import { SunriseSunsetData } from '../model/luogo.model';
-import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-home',
@@ -12,17 +10,15 @@ import { ApiService } from '../services/api.service';
 export class HomeComponent {
   lat: string = '';
   lon: string = '';
-  sunriseSunset: SunriseSunsetData | undefined;
 
-  constructor(
-    private router: Router,
-    public dataService: DataService,
-    public apiService: ApiService
-  ) {}
+  constructor(private router: Router, private dataService: DataService) {}
 
-  selectLocation(lat: string, lon: string) {
-    this.apiService.getSunriseSunset(lat, lon).subscribe((data: any) => {
-      this.sunriseSunset = data as SunriseSunsetData;
-    });
+  selectLocation() {
+    if (this.lat !== undefined && this.lon !== undefined) {
+      this.dataService.selectedLocation = { lat: this.lat, lon: this.lon };
+      this.router.navigate(['/dettaglio']);
+    } else {
+      alert('Please enter both latitude and longitude.');
+    }
   }
 }

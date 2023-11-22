@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { DataService } from '../services/data.service';
 import { WeatherData, SunriseSunsetData } from '../model/luogo.model';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dettaglio',
@@ -11,31 +9,36 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./dettaglio.component.css'],
 })
 export class DettaglioComponent implements OnInit {
-  currentLocation = { latitude: '', longitude: '' };
+  weatherData: WeatherData[] = [];
   sunriseSunsetData: SunriseSunsetData | undefined;
-  weatherData: WeatherData | undefined;
-  paramsSub: Subscription | undefined;
-  httpSub: Subscription | undefined;
 
   constructor(
-    private route: ActivatedRoute,
     private apiService: ApiService,
     public dataService: DataService
   ) {}
 
-  ngOnInit(): void {
-    this.paramsSub = this.route.params.subscribe((params) => {
-      const lat: string = params['lat'];
-      const lon: string = params['lon'];
+  ngOnInit() {
+    if (this.dataService.selectedLocation) {
+      const lat = this.dataService.selectedLocation.lat;
+      const lon = this.dataService.selectedLocation.lon;
 
-      this.apiService.getSunriseSunset(lat, lon).subscribe((data: any) => {
-        this.sunriseSunsetData = data;
-        console.log(data);
-      });
+      this.apiService.getSunriseSunset(lat, lon).subscribe(
+        (data) => {
+          this.sunriseSunsetData = data;
+        }
+        // (error) => {
+        //   console.error('Sunrise/Sunset API Error:', error);
+        // }
+      );
 
-      //   this.apiService.getWeather(lat, lon).subscribe((data: WeatherData) => {
-      //     this.weatherData = data;
-      //   });
-    });
+      this.apiService.getWeather(lat, lon).subscribe(
+        (data) => {
+          this.weatherData = data;
+        }
+        // (error) => {
+        //   console.error('Weather API Error:', error);
+        // });
+      );
+    }
   }
 }
