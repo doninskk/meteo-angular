@@ -7,13 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DettaglioComponent } from './dettaglio/dettaglio.component';
-import { ErrorComponent } from './error/error.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
     AppComponent, 
     HomeComponent, 
-    DettaglioComponent, ErrorComponent,
+    DettaglioComponent, 
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule, 
@@ -21,11 +22,7 @@ import { ErrorComponent } from './error/error.component';
     HttpClientModule, 
     AppRoutingModule,
   ],
-  providers: [
-
-  ],
-  bootstrap: [
-    AppComponent
-  ],
+  providers: [ ],
+  bootstrap: [ AppComponent ],
 })
 export class AppModule {}

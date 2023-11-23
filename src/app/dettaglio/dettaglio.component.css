@@ -1,43 +1,38 @@
-
-
 body {
   font-family: Arial, sans-serif;
-  background-image:  linear-gradient(to right top, #85b5ff, #93aaf0, #9c9fe1, #a295d0, #a58cc0); /* Light grey background to help the container stand out */
+  background-image:  linear-gradient(to right top, #85b5ff, #93aaf0, #9c9fe1, #a295d0, #a58cc0); 
   color: #333;
   text-align: center;
-}
-html {
-  background-color: #000; /* This will set a light grey background color */
+  padding: 15vh 2vh 15vh;
 }
 
 .container {
   width: 80%;
-  margin: 40px auto; /* Add more vertical margin to give some space around the container */
+  margin: 0 auto; 
   overflow: hidden;
-  background-color: #ffffff; /* Ensure container background is white */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increased shadow for more depth */
-  padding: 20px; /* Padding inside the container */
+  background-color: #ffffff; 
+  border-radius: 10px; 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+  padding: 20px; 
 }
 
 .table-responsive {
   margin: 20px 0;
 }
 
-/* Table Styling */
 .styled-table {
   width: 100%;
   border-collapse: collapse;
   margin: 25px 0;
   font-size: 0.9em;
-  min-width: 400px;
+  min-width: 600px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  border-radius: 10px; /* Rounded corners for tables */
-  overflow: hidden; /* Ensures the inside elements respect the border-radius */
+  border-radius: 10px;
+  overflow: hidden; 
 }
 
 .styled-table thead tr {
-  background-color: #009879;
+  background-color: rgba(130, 179, 232, 0.807);
   color: #ffffff;
   text-align: left;
 }
@@ -45,6 +40,7 @@ html {
 .styled-table th,
 .styled-table td {
   padding: 12px 15px;
+  text-align: center;
 }
 
 .styled-table tbody tr {
@@ -56,10 +52,9 @@ html {
 }
 
 .styled-table tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
+  border-bottom: 2px solid  rgba(130, 179, 232, 0.807);
 }
 
-/* Responsive Table Design */
 @media screen and (max-width: 600px) {
   .styled-table {
     width: 100%;
