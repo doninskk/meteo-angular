@@ -8,8 +8,11 @@
 <body>
   <div class="container">
     <div *ngIf="dataService.selectedLocation">
-      <h2>Risultati per le coordinate {{ dataService.selectedLocation.lat }},
-      {{ dataService.selectedLocation.lon }}</h2>
+      <hr>
+      <h1>Risultati per le coordinate</h1>
+      <hr>
+      <h2> {{ dataService.selectedLocation.lat }},
+      {{ dataService.selectedLocation.lon }},  {{ sunriseSunsetData?.timezone}}</h2>
     
       <div class="table-responsive">
         <h3>Orari di alba e tramonto:</h3>

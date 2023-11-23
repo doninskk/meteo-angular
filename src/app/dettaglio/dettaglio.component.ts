@@ -9,7 +9,7 @@ import { WeatherData, SunriseSunsetData } from '../model/luogo.model';
   styleUrls: ['./dettaglio.component.css'],
 })
 export class DettaglioComponent implements OnInit {
-  weatherData: WeatherData[] = [];
+  weatherData: WeatherData[] = []; 
   sunriseSunsetData: SunriseSunsetData | undefined;
 
   constructor(
@@ -21,13 +21,11 @@ export class DettaglioComponent implements OnInit {
     if (this.dataService.selectedLocation) {
       const lat = this.dataService.selectedLocation.lat;
       const lon = this.dataService.selectedLocation.lon;
-
       
       this.apiService.getSunriseSunset(lat, lon).subscribe(
         (data) => {
           this.sunriseSunsetData = data;
-          console.log(lat)
-          console.log(lon)
+          console.log(data)
         }
         // (error) => {
         //   console.error('Sunrise/Sunset API Error:', error);
@@ -37,6 +35,7 @@ export class DettaglioComponent implements OnInit {
       this.apiService.getWeather(lat, lon).subscribe(
         (data) => {
           this.weatherData = data;
+          console.log(data)
         }
         // (error) => {
         //   console.error('Weather API Error:', error);

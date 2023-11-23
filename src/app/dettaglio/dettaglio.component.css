@@ -1,16 +1,23 @@
-/* General Page Styling */
+
+
 body {
   font-family: Arial, sans-serif;
-  background-color: #ffffff;
+  background-image:  linear-gradient(to right top, #85b5ff, #93aaf0, #9c9fe1, #a295d0, #a58cc0); /* Light grey background to help the container stand out */
   color: #333;
   text-align: center;
 }
+html {
+  background-color: #000; /* This will set a light grey background color */
+}
 
-/* Container Styling */
 .container {
   width: 80%;
-  margin: 0 auto;
+  margin: 40px auto; /* Add more vertical margin to give some space around the container */
   overflow: hidden;
+  background-color: #ffffff; /* Ensure container background is white */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increased shadow for more depth */
+  padding: 20px; /* Padding inside the container */
 }
 
 .table-responsive {
@@ -25,6 +32,8 @@ body {
   font-size: 0.9em;
   min-width: 400px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border-radius: 10px; /* Rounded corners for tables */
+  overflow: hidden; /* Ensures the inside elements respect the border-radius */
 }
 
 .styled-table thead tr {
@@ -58,3 +67,5 @@ body {
     overflow-x: auto;
   }
 }
+
+
