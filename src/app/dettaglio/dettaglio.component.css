@@ -1,27 +1,71 @@
-.container {
-    margin: 0 auto;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-  
-  h2 {
-    color: #24292e;
-  }
 
-  h3 {
-    color: orange;
-  }
-  
-  table {
+
+body {
+  font-family: Arial, sans-serif;
+  background-image:  linear-gradient(to right top, #85b5ff, #93aaf0, #9c9fe1, #a295d0, #a58cc0); /* Light grey background to help the container stand out */
+  color: #333;
+  text-align: center;
+}
+html {
+  background-color: #000; /* This will set a light grey background color */
+}
+
+.container {
+  width: 80%;
+  margin: 40px auto; /* Add more vertical margin to give some space around the container */
+  overflow: hidden;
+  background-color: #ffffff; /* Ensure container background is white */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increased shadow for more depth */
+  padding: 20px; /* Padding inside the container */
+}
+
+.table-responsive {
+  margin: 20px 0;
+}
+
+/* Table Styling */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border-radius: 10px; /* Rounded corners for tables */
+  overflow: hidden; /* Ensures the inside elements respect the border-radius */
+}
+
+.styled-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+/* Responsive Table Design */
+@media screen and (max-width: 600px) {
+  .styled-table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 0px;
+    display: block;
+    overflow-x: auto;
   }
-    
-  th {
-    background-color: #93b6dc;
-    color: white;
-  }
+}
+
+

@@ -27,20 +27,20 @@ export class HomeComponent {
     }
   }
 
+
   selectCity(city: string) {
     if (city == "Torino") {
-
-      this.dataService.selectedLocation = { lat: '10', lon: '10' };
+      this.dataService.selectedLocation = { lat: '45.069641423101714', lon: '7.680643277670245' };
       this.router.navigate(['/dettaglio']);
     }else if(city == "Seoul"){
-
-      this.dataService.selectedLocation = { lat: '20', lon: '20' };
+      this.dataService.selectedLocation = { lat: '37.532600', lon: '127.024612' };
       this.router.navigate(['/dettaglio']);
-
+    }else if(city == "New York"){
+      this.dataService.selectedLocation = { lat: '40.730610', lon: '-73.935242' };
+      this.router.navigate(['/dettaglio']);
     }
-
     else {
-      alert('Please enter both latitude and longitude.');
+      alert('Latitudine e Longitudine non presenti.');
     }
   }
 
