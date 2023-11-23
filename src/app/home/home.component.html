@@ -6,34 +6,57 @@
     <title>Home - Meteo</title>
 </head>
 <body>
+    <!-- Hero Section -->
+    <section id="hero" class="d-flex justify-content-center align-items-center">
+        <div class="content text-center text-white">
+            <h1>Previsioni del tempo</h1>
+            <h2>Inserisci le coordinate per avere info sul meteo</h2>
+            <div class="formWrapper">
+                <form (ngSubmit)="selectLocation()">
+                    <div class="formRow d-flex">
+                        <!-- Latitude Input -->
+                        <div class="field flex-fill me-5">
+                            <label for="lat">Latitudine</label>
+                            <input class="d-block" type="text" name="lat" id="lat" [(ngModel)]="lat" placeholder="Inserisci latitudine">
+                        </div>
+                        <!-- Longitude Input -->
+                        <div class="field flex-fill ms-5">
+                            <label for="lng">Longitudine</label>
+                            <input class="d-block" type="text" name="lng" id="lng" [(ngModel)]="lon" placeholder="Inserisci longitudine">
+                        </div>
+                    </div>
+                    <div class="formRow d-flex">
+                        <div class="field flex-fill me-5">
+                            <input class="d-block btn btn-light" type="reset" value="Reset">
+                        </div>
+                        <div class="field flex-fill ms-5">
+                            <input class="d-block btn btn-success" type="submit" value="Richiedi i dati">
+                        </div>
+                    </div>
+                </form>
+            </div>
 
-    <div class="container">
-        <h1>Meteo - Home</h1>
-        <label for="lat">Latitude:</label>
-        <input type="text" id="lat" [(ngModel)]="lat" placeholder="Enter latitude" /><br/>
-        <label for="lon">Longitude:</label>
-        <input type="text" id="lon" [(ngModel)]="lon" placeholder="Enter longitude" /><br />
-        <button (click)="selectLocation()">Cerca</button>
+        </div>
+    </section>
+
+    <div id="canvasWrapper">
+        <canvas></canvas>
     </div>
 
+    <!-- Footer -->
+    <footer>
+        <div>
+            <h3>Informazioni</h3>
+            <p>Questo sito web fornisce informazioni sulle città più visitate del mondo.</p>
+        </div>
+        <div>
+            <h3>Le città più visitate</h3>
+            <ul>
+                <li (click)="selectCity('Torino')" style="cursor:pointer;">Torino</li>
+                <li (click)="selectCity('Seoul')" style="cursor:pointer;">Seoul</li>
+                <!-- Add more cities if needed -->
+            </ul>
+        </div>
+    </footer>
 </body>
-
-<footer>
-    <div>
-      <h3>Informazioni</h3>
-      <p>Questo sito web fornisce informazioni sulle città più visitate del mondo.</p>
-    </div>
-    <div>
-      <h3>Le città più visitate</h3>
-      <ul>
-        <li><a (click)="selectCity('Torino')" style="cursor:pointer;" > Torino</a></li>
-        <li><a (click)="selectCity('Seoul')" style="cursor:pointer;" > Seoul</a></li>
-        <!-- Add more cities if needed -->
-      </ul>
-    </div>
-
-  </footer>
-
-
 </html>
-

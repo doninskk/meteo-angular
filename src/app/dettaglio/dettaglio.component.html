@@ -7,46 +7,48 @@
 </head>
 <body>
   <div class="container">
-  <div *ngIf="dataService.selectedLocation">
-    <h2>
-      Risultati per le coordinate {{ dataService.selectedLocation.lat }},
-      {{ dataService.selectedLocation.lon }}
-    </h2>
+    <div *ngIf="dataService.selectedLocation">
+      <h2>Risultati per le coordinate {{ dataService.selectedLocation.lat }},
+      {{ dataService.selectedLocation.lon }}</h2>
+    
+      <div class="table-responsive">
+        <h3>Orari di alba e tramonto:</h3>
+        <table class="styled-table">
+          <tr>
+            <th>Evento</th>
+            <th>Ora</th>
+          </tr>
+          <tr>
+            <td>Alba</td> 
+            <td>{{ sunriseSunsetData?.sunrise }}</td>
+          </tr>
+          <tr>  
+            <td>Tramonto</td> 
+            <td>{{ sunriseSunsetData?.sunset }}</td>
+          </tr>
+        </table>
+      </div>
   
-    <div>
-      <h3>Orari di alba e tramonto:</h3>
-      <table>
-        <tr>
-          <th>Evento</th>
-          <th>Ora</th>
-        </tr>
-        <tr>
-          <td>Alba</td> 
-          <td>{{ sunriseSunsetData?.sunrise }}</td>
-        </tr>
-        <tr>  
-          <td>Tramonto</td> 
-          <td> {{ sunriseSunsetData?.sunset }}</td>
-        </tr>
-      </table>
+      <div class="table-responsive">
+        <h3>Dati meteo</h3>
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th scope="col">Timepoint</th>
+              <th scope="col">Temperature</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let weather of weatherData">
+              <td>{{ weather.timepoint }}</td>
+              <td>{{ weather.temp2m }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <h3>Dati meteo</h3>
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th scope="col">Timepoint</th>
-          <th scope="col">Temperature</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let weather of weatherData">
-          <td>{{ weather.timepoint }}</td>
-          <td>{{ weather.temp2m }}</td>
-        </tr>
-      </tbody>
-    </table>
   </div>
-</div>
+  
 </body>
 </html>
 
